@@ -1,13 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = false
-
--- [[ Setting options ]]
--- See `:help vim.o`
--- NOTE: You can change these options as you wish!
---  For more options, you can see `:help option-list`
 
 -- Make line numbers default
 vim.o.number = true
@@ -95,16 +89,19 @@ vim.diagnostic.config({
 	-- Auto open the float, so you can easily read the errors when jumping with `[d` and `]d`
 	jump = { float = true },
 })
--- [[ Basic Autocommands ]]
---  See `:help lua-guide-autocommands`
 
--- Highlight when yanking (copying) text
---  Try it with `yap` in normal mode
---  See `:help vim.hl.on_yank()`
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
 	callback = function()
 		vim.hl.on_yank()
+	end,
+})
+
+vim.api.nvim_create_autocmd({ "BufLeave", "QuitPre" }, {
+	desc = "Save file when leaving buffer",
+	group = vim.api.nvim_create_augroup("BufferLeaveSave", { clear = true }),
+	callback = function()
+		vim.cmd("silent! w")
 	end,
 })

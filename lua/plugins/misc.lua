@@ -14,4 +14,10 @@ return {
 		event = "InsertEnter",
 		config = true,
 	},
+	{
+		"mbbill/undotree",
+	},
+	{
+		"tpope/vim-fugitive",
+	},
 }
