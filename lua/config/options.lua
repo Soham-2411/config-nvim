@@ -98,10 +98,16 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
-vim.api.nvim_create_autocmd({ "BufLeave", "QuitPre" }, {
+vim.o.updatetime = 1000
+
+vim.api.nvim_create_autocmd({ "BufLeave", "QuitPre", "CursorHold" }, {
 	desc = "Save file when leaving buffer",
 	group = vim.api.nvim_create_augroup("BufferLeaveSave", { clear = true }),
+
 	callback = function()
-		vim.cmd("silent! w")
+		local buf = vim.api.nvim_get_current_buf()
+		if vim.bo[buf].modified and vim.bo[buf].buftype == "" then
+			vim.cmd("silent! w")
+		end
 	end,
 })
