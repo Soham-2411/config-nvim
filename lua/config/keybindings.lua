@@ -1,4 +1,6 @@
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "[G]oto [D]efinition" })
+
 vim.keymap.set("n", "<leader>cd", vim.cmd.Ex, { desc = "Explore command" })
 vim.keymap.set("n", "<leader>s", vim.cmd.w, { desc = "Use Leader - s to save files" })
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Display undo tree" })
