@@ -15,9 +15,12 @@ local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
 require("lazy").setup({
-
 	{ import = "plugins" },
 }, { ---@diagnostic disable-line: missing-fields
+	change_detection = {
+		enabled = true,
+		notify = false,
+	},
 	ui = {
 		icons = vim.g.have_nerd_font and {} or {
 			cmd = "⌘",

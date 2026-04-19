@@ -11,6 +11,8 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
 
+vim.o.linespace = 10
+
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = "a"
 
@@ -35,7 +37,6 @@ vim.o.smartcase = true
 
 -- Keep signcolumn on by default
 vim.o.signcolumn = "yes"
-
 
 -- Decrease mapped sequence wait time
 vim.o.ttimeoutlen = 0
@@ -73,7 +74,7 @@ vim.o.confirm = true
 -- Diagnostic Config & Keymaps
 -- See :help vim.diagnostic.Opts
 vim.diagnostic.config({
-	update_in_insert = false,
+	update_in_insert = true,
 	severity_sort = true,
 	float = { border = "rounded", source = "if_many" },
 	underline = { severity = { min = vim.diagnostic.severity.WARN } },
@@ -96,7 +97,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 vim.o.updatetime = 1000
 
-vim.api.nvim_create_autocmd({ "BufLeave", "QuitPre", "CursorHold" }, {
+vim.api.nvim_create_autocmd({ "BufLeave", "QuitPre" }, {
 	desc = "Save file when leaving buffer",
 	group = vim.api.nvim_create_augroup("BufferLeaveSave", { clear = true }),
 

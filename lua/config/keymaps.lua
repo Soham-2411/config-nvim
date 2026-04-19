@@ -13,6 +13,7 @@ vim.keymap.set("n", "<leader><C-k>", "<C-w><C-k>", { desc = "Move focus to the u
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex, { desc = "[E]xplore command" })
 vim.keymap.set("n", "<leader>s", vim.cmd.w, { desc = "Use Leader - s to save files" })
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Display undo tree" })
+vim.keymap.set("n", "<leader>fl", vim.cmd.FlutterLogToggle, { desc = "[Flutter] [L]og Toggle" })
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "dart",
@@ -25,3 +26,4 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "[G]oto [D]efinition" })
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "[C]ode [A]ctions" })
+
