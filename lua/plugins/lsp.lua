@@ -11,6 +11,9 @@ return {
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 			callback = function(event)
+				local client = vim.lsp.get_client_by_id(event.data.client_id)
+				require("workspace-diagnostics").populate_workspace_diagnostics(client, event.buf)
+
 				local map = function(keys, func, desc, mode)
 					mode = mode or "n"
 					vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
